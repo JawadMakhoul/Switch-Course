@@ -65,7 +65,7 @@ Task 3: Undo Feature in Text Editor
         ○ Input: Actions [], Undo 1 → Output: []
 """
 def undo_actions(actions, undo_steps):
-    stack = actions[:]  # Copy the list to mimic a stack
+    stack = actions[:]  # Copy the list to a stack
     
     # Undo steps
     for _ in range(undo_steps):
@@ -76,10 +76,47 @@ def undo_actions(actions, undo_steps):
     
     return stack
 
-# Test cases
 print("      Task 3     ")
 print(undo_actions(["type A", "type B", "delete"], 1))  # Output: ["type A", "type B"]
 print(undo_actions(["A", "B"], 1))  # Output: ["A"]
 print(undo_actions(["X"], 2))  # Output: []
 print(undo_actions([], 1))  # Output: []
+print("\n")
+
+"""
+Task 4: Validate Parentheses in a Code Snippet
+    ● Problem: Write a function to check if parentheses are balanced in a string.
+    ● Input: "([{}])"
+    ● Output: true
+    ● Examples:
+        ○ Input: "([])" → Output: true
+        ○ Input: "([)]" → Output: false
+        ○ Input: "" → Output: true
+"""
+def validate_parentheses(VPList):
+
+    VPStack=[]
+
+    for item in VPList:
+        if item == '{' or item == '[' or item == '(':
+            VPStack.append(item)
+        
+        elif item == '}' or item == ']' or item == ')':
+           
+            if not VPStack: # check if the stack is empty
+                return False  
+
+            
+            top = VPStack[-1]
+            if (top == '{' and item == '}') or (top == '[' and item == ']') or (top == '(' and item == ')'):
+                VPStack.pop()
+
+    if len(VPStack) == 0:
+        return True
+    return False
+print("      Task 4     ")
+print(validate_parentheses("([{}])"))
+print(validate_parentheses("([])"))
+print(validate_parentheses("([)]"))
+print(validate_parentheses(""))
 print("\n")
