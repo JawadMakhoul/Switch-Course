@@ -83,6 +83,8 @@ print(undo_actions(["X"], 2))  # Output: []
 print(undo_actions([], 1))  # Output: []
 print("\n")
 
+###################################################################
+
 """
 Task 4: Validate Parentheses in a Code Snippet
     ● Problem: Write a function to check if parentheses are balanced in a string.
@@ -121,6 +123,8 @@ print(validate_parentheses("([)]"))
 print(validate_parentheses(""))
 print("\n")
 
+###################################################################
+
 """
 Task 9: Daily Temperature Analysis
     ● Problem: For an array of daily temperatures, return the number of days until a
@@ -158,4 +162,73 @@ print(daily_temperature_analysis([73,74,75,71,69,72,76,73]))
 print(daily_temperature_analysis([30,40,50,60]))
 print(daily_temperature_analysis([60,50,40]))
 print(daily_temperature_analysis([30]))
-print(daily_temperature_analysis([60,60,60]))
+
+###################################################################
+
+"""
+Task 5: Ticket Counter Simulation
+    ● Problem: Simulate serving customers at a ticket counter.
+    ● Input: ["Alice", "Bob", "Charlie"]
+    ● Output: ["Alice", "Bob", "Charlie"]
+    ● Examples:
+        ○ Input: ["John", "Doe"] → Output: ["John", "Doe"]
+        ○ Input: [] → Output: []
+        ○ Input: ["OnlyOne"] → Output: ["OnlyOne"]
+"""
+from collections import deque
+
+def ticket_counter_simulation(customers):
+    
+    queue = deque(customers) 
+    served = []  
+
+    while queue:
+        current_customer = queue.popleft()
+        served.append(current_customer) 
+
+    return served
+
+
+print(ticket_counter_simulation(["Alice", "Bob", "Charlie"]))  # Output: ["Alice", "Bob", "Charlie"]
+print(ticket_counter_simulation(["John", "Doe"]))  # Output: ["John", "Doe"]
+print(ticket_counter_simulation([]))  # Output: []
+print(ticket_counter_simulation(["OnlyOne"]))  # Output: ["OnlyOne"]
+
+###################################################################
+"""
+Task 6: Family Tree Search
+    ● Problem: Search for a name in a family tree.
+    ● Input: Tree rooted at A
+"""
+###################################################################
+"""
+Task 7: Directory Size Calculation
+    Problem: Sum file sizes in a directory tree.
+    Input: Tree:
+    Root (10)
+    ├── Sub1 (5)
+    ├── Sub2 (15)
+        ├── File1 (10)
+        ├── File2 (5)
+    Output: 45
+    Examples:
+        ● Add File (20) under Sub2 → Output: 65
+        ● Remove File1 → Output: 35
+"""
+###################################################################
+"""
+Task 13: Check Tree Symmetry
+    ● Problem: Determine if a tree is symmetric.
+    Input:
+         1
+        / \
+        2 2
+        / \
+        3 3
+    ● Output: true
+    ● Examples:
+        ○ Symmetric: [[1], [2, 2]] → true
+        ○ Asymmetric: [[1], [2, null]] → false
+"""
+
+###################################################################
