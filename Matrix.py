@@ -120,3 +120,42 @@ print(validate_parentheses("([])"))
 print(validate_parentheses("([)]"))
 print(validate_parentheses(""))
 print("\n")
+
+"""
+Task 9: Daily Temperature Analysis
+    ● Problem: For an array of daily temperatures, return the number of days until a
+               warmer day for each day. If no warmer day exists, return 0.
+    ● Input: [73, 74, 75, 71, 69, 72, 76, 73]
+    ● Output: [1, 1, 4, 2, 1, 1, 0, 0]
+    ● Examples:
+        ○ Input: [30, 40, 50, 60] → Output: [1, 1, 1, 0]
+        ○ Input: [60, 50, 40] → Output: [0, 0, 0]
+        ○ Input: [30] → Output: [0]
+"""
+
+def daily_temperature_analysis(tempList):
+
+    i=0
+    j=1
+    while i < len(tempList)-1:
+        count=0
+        j=i+1
+        while j < len(tempList):   
+            count+=1
+            if(tempList[i]<tempList[j]):
+                break
+            
+            
+            j+=1
+        if(j== len(tempList)):
+                tempList[i]=0
+        else: tempList[i]=count
+        i+=1  
+    tempList[len(tempList)-1]=0
+    return tempList
+
+print(daily_temperature_analysis([73,74,75,71,69,72,76,73]))
+print(daily_temperature_analysis([30,40,50,60]))
+print(daily_temperature_analysis([60,50,40]))
+print(daily_temperature_analysis([30]))
+print(daily_temperature_analysis([60,60,60]))
