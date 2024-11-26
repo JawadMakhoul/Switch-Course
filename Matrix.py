@@ -158,11 +158,12 @@ def daily_temperature_analysis(tempList):
     tempList[len(tempList)-1]=0
     return tempList
 
+print("      Task 9     ")
 print(daily_temperature_analysis([73,74,75,71,69,72,76,73]))
 print(daily_temperature_analysis([30,40,50,60]))
 print(daily_temperature_analysis([60,50,40]))
 print(daily_temperature_analysis([30]))
-
+print("\n")
 ###################################################################
 
 """
@@ -188,18 +189,52 @@ def ticket_counter_simulation(customers):
 
     return served
 
-
+print("      Task 5     ")
 print(ticket_counter_simulation(["Alice", "Bob", "Charlie"]))  # Output: ["Alice", "Bob", "Charlie"]
 print(ticket_counter_simulation(["John", "Doe"]))  # Output: ["John", "Doe"]
 print(ticket_counter_simulation([]))  # Output: []
 print(ticket_counter_simulation(["OnlyOne"]))  # Output: ["OnlyOne"]
-
+print("\n")
 ###################################################################
 """
 Task 6: Family Tree Search
     ● Problem: Search for a name in a family tree.
     ● Input: Tree rooted at A
 """
+
+class FamilyTreeNode:
+    def __init__(self,name):
+        self.name = name
+        self.children = [] 
+
+def family_tree_search(root,wanted_name):
+    if not root:
+        return False
+    
+    if root.name == wanted_name:
+        return True
+        
+    for child in root.children:
+        if family_tree_search(child,wanted_name):
+            return True
+    
+    return False
+
+root = FamilyTreeNode("A")
+child1 = FamilyTreeNode("B")
+child2 = FamilyTreeNode("C")
+child3 = FamilyTreeNode("D")
+root.children.extend([child1,child2,child3])
+
+child1.children.append(FamilyTreeNode("E"))
+child1.children.append(FamilyTreeNode("F"))
+child2.children.append(FamilyTreeNode("G"))
+child3.children.append(FamilyTreeNode("H"))
+
+print("      Task 6     ")
+print(family_tree_search(root, "E"))
+print(family_tree_search(root,"X"))
+print("\n")
 ###################################################################
 """
 Task 7: Directory Size Calculation
