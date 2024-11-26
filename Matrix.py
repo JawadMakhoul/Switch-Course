@@ -213,7 +213,7 @@ def family_tree_search(root,wanted_name):
     
     if root.name == wanted_name:
         return True
-        
+
     for child in root.children:
         if family_tree_search(child,wanted_name):
             return True
@@ -250,6 +250,45 @@ Task 7: Directory Size Calculation
         ● Add File (20) under Sub2 → Output: 65
         ● Remove File1 → Output: 35
 """
+
+class DirectoryNode:
+    def __init__(self,name,size=0):
+        self.name = name
+        self.size=size
+        self.children = []
+
+def calculate_directory_size(node):
+    if not node:
+        return 0
+
+    total_size = node.size
+    for child in node.children:
+        total_size += calculate_directory_size(child)
+    return total_size
+
+root = DirectoryNode("Root", 10)
+sub1= DirectoryNode("Sub1", 5)
+sub2 = DirectoryNode("Sub2", 15)
+file1 = DirectoryNode("File1", 10)
+file2 = DirectoryNode("File2", 5)
+
+root.children.append(sub1)
+root.children.append(sub2)
+root.children.append(file1)
+root.children.append(file2)
+
+print("      Task 6     ")
+print("Total size:", calculate_directory_size(root)) 
+
+newFile = DirectoryNode("File3", 20)
+sub2.children.append(newFile)
+
+print("Total size after adding File3:", calculate_directory_size(root))
+
+root.children = [child for child in root.children if child.name != "File1"]
+
+print("Total size after removing File1:", calculate_directory_size(root)) 
+print("\n")
 ###################################################################
 """
 Task 13: Check Tree Symmetry
