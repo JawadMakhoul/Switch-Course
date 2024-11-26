@@ -305,4 +305,40 @@ Task 13: Check Tree Symmetry
         ○ Asymmetric: [[1], [2, null]] → false
 """
 
-###################################################################
+class TreeNode:
+    def __init__(self, value=0, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
+
+def is_symmetric(root):
+    if not root:
+        return True  # empty tree
+    
+    def is_mirror(t1, t2):
+        if not t1 and not t2:
+            return True  # both childs are null
+        if not t1 or not t2:
+            return False 
+        return (
+            t1.value == t2.value 
+            and is_mirror(t1.left, t2.right)  
+            and is_mirror(t1.right, t2.left)  
+        )
+    
+    return is_mirror(root.left, root.right)
+
+root = TreeNode(1)
+root.left = TreeNode(2, TreeNode(3), TreeNode(4))
+root.right = TreeNode(2, TreeNode(4), TreeNode(3))
+
+print("      Task 13     ")
+print(is_symmetric(root))  # True
+
+asymmetric_root = TreeNode(1)
+asymmetric_root.left = TreeNode(2, None, TreeNode(3))
+asymmetric_root.right = TreeNode(2, None, TreeNode(3))
+
+print(is_symmetric(asymmetric_root))  # False
+
+
