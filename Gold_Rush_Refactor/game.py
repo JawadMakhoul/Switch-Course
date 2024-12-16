@@ -1,11 +1,14 @@
 from Matrix import Matrix
 import random
+from typing import Generic, TypeVar
 
+
+type = TypeVar('type')
 class GoldRush(Matrix):
-    def __init__(self, rows, cols):
+    def __init__(self, rows, cols,score_type):
         super().__init__(rows, cols)
-        self.s1 = 0
-        self.s2 = 0
+        self.s1: type = score_type
+        self.s2: type = score_type
         self.win = ""
         self.coins = 0
 
