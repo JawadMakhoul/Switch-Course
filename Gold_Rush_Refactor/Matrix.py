@@ -1,18 +1,19 @@
+from typing import Generic, TypeVar, List
+
+Element = TypeVar('Element')
+
 class Matrix:
-    def __init__(self, rows, cols):
-        self.matrix = []
+    def __init__(self, rows: int, cols: int):
+        self.matrix: List[List[Element]] = []
         self.rows = rows
         self.cols = cols
 
-    def generate_matrix(self):
+    def generate_matrix(self, default_value: Element) -> None:
         num = 1
         if self.rows == 0 and self.cols == 0:
             return
-        for i in range(self.rows):
-            self.matrix.append([])
-            for j in range(self.cols):
-                self.matrix[i].append(num)
-                num += 1
+        self.matrix = [[default_value for _ in range(self.cols)] for _ in range(self.rows)]
+
 
     def print(self):
         for row in self.matrix:
