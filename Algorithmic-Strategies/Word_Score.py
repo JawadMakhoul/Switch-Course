@@ -1,9 +1,9 @@
 def word_score(str):
     str_splits = str.split(" ")
-    words = check_char(str_splits)
+    words = get_word_score(str_splits)
     return max_score(words)
 
-def check_char(str_split): 
+def get_word_score(str_split): 
     sum_of_ascii = 0
     words_store = {}
     for word in str_split:
